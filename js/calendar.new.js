@@ -10,8 +10,9 @@ var calendar = calendar || {},
 (function (calendar, data) {
 
     var genVar = {
-            trigger: '.hd-trigger',
-            block: '.hd-block',
+            trigger: 'hd-trigger',
+            block: 'hd-block',
+            close: 'hd-close',
             clBlock: '.cl-block',
             clTable: '.cl-table',
             clTitle: '.month-year-title',
@@ -65,7 +66,6 @@ var calendar = calendar || {},
         [].slice.call(document.querySelectorAll(genVar.clRow)).forEach(function (row, i) {
             [].slice.call(row.querySelectorAll(genVar.clCol)).forEach(function (col, j) {
                 col.querySelector('.day-of-month').innerHTML = '' + genVar.curDate.getDate();
-
                 for(var x in data)
                 {
                     if ( parseInt(data[x].date.day,10) == parseInt(curDate.getDay(), 10) &&
@@ -75,86 +75,87 @@ var calendar = calendar || {},
                         col.setAttribute('date-id', '' + parseInt(curDate.getTime(), 10));
                     }
                 }
-
                 todayCheck ( curDate, todayDate, col );
-
                 curDate.setDate(curDate.getDate() + 1);
             })
         });
     }
 
-    function eventHandling () {
-        [].slice.call(document.querySelectorAll(genVar.trigger)).forEach(function (elTrigger, i) {
-            var block = document.querySelector('.hd-block[hd-block="' + elTrigger.getAttribute('hd-trigger') + '"]'),
-                close = [].slice.call(block.querySelectorAll('.hd-close'));
-            elTrigger.addEventListener('click', function (e) {
+    function eventHandling (trigger, block, close) {
+        var triggerList = [].slice.call(document.querySelectorAll('.' + trigger));
+
+        triggerList.forEach(function (elTrigger, i) {
+            var curBlock = document.querySelector('.' + block + '[' + block + '="' + elTrigger.getAttribute(trigger) + '"]'),
+                closeList = [].slice.call(curBlock.querySelectorAll('.' + close));
+                elTrigger.addEventListener('click', function (e) {
                 e.preventDefault();
                 if (!elTrigger.classList.contains('active')) {
-                    [].slice.call(document.querySelectorAll(genVar.trigger)).forEach(function (elt, i) {
+                    [].slice.call(document.querySelectorAll(trigger)).forEach(function (elt, i) {
                         elt.classList.remove('active');
                     });
-                    [].slice.call(document.querySelectorAll(genVar.block)).forEach(function (elb, i) {
+                    [].slice.call(document.querySelectorAll(block)).forEach(function (elb, i) {
                         elb.classList.remove('visible');
                     });
 
                     setTimeout(function () {
                         elTrigger.classList.add('active');
-                        block.classList.add('visible');
+                        curBlock.classList.add('visible');
 
-                        if (elTrigger.getAttribute('hd-trigger') == 'add-edit-ev') {
-                            if ((block.offsetWidth + elTrigger.offsetLeft + elTrigger.offsetWidth)
+                        if (elTrigger.getAttribute(trigger) == 'add-edit-ev') {
+                            if ((curBlock.offsetWidth + elTrigger.offsetLeft + elTrigger.offsetWidth)
                                 > document.querySelector(genVar.clBlock).offsetWidth)
                             {
-                                block.classList.remove('right');
-                                block.classList.add('left');
-                                block.style.left = elTrigger.offsetLeft - block.offsetWidth - 20 + 'px';
+                                curBlock.classList.remove('right');
+                                curBlock.classList.add('left');
+                                curBlock.style.left = elTrigger.offsetLeft - curBlock.offsetWidth - 20 + 'px';
                             }
                             else
                             {
-                                block.classList.remove('left');
-                                block.classList.add('right');
-                                block.style.left = elTrigger.offsetLeft + elTrigger.offsetWidth + 20 + 'px';
+                                curBlock.classList.remove('left');
+                                curBlock.classList.add('right');
+                                curBlock.style.left = elTrigger.offsetLeft + elTrigger.offsetWidth + 20 + 'px';
                             }
 
                             if (elTrigger.offsetTop == 0)
                             {
-                                block.style.top = elTrigger.offsetTop + 'px';
+                                curBlock.style.top = elTrigger.offsetTop + 'px';
                             }
-                            else if ((block.offsetHeight + elTrigger.offsetTop) > document.querySelector(genVar.clBlock).offsetHeight)
+                            else if ((curBlock.offsetHeight + elTrigger.offsetTop) > document.querySelector(genVar.clBlock).offsetHeight)
                             {
-                                block.classList.remove('top');
-                                block.classList.add('bottom');
+                                curBlock.classList.remove('top');
+                                curBlock.classList.add('bottom');
                                 var i = 0;
                                 do {
-                                    block.style.top = elTrigger.offsetTop + elTrigger.offsetHeight - block.offsetHeight + i + 'px';
+                                    curBlock.style.top = elTrigger.offsetTop + elTrigger.offsetHeight - curBlock.offsetHeight + i + 'px';
                                     i++;
-                                } while (block.offsetHeight + block.offsetTop + 20 < document.querySelector(genVar.clBlock).offsetHeight);
+                                } while (curBlock.offsetHeight + curBlock.offsetTop + 20 < document.querySelector(genVar.clBlock).offsetHeight);
                             }
                             else
                             {
-                                block.classList.remove('bottom');
-                                block.classList.add('top');
-                                block.style.top = elTrigger.offsetTop - 20 + 'px';
+                                curBlock.classList.remove('bottom');
+                                curBlock.classList.add('top');
+                                curBlock.style.top = elTrigger.offsetTop - 20 + 'px';
                             }
                         }
                     }, 50)
                 }
                 else {
                     elTrigger.classList.remove('active');
-                    block.classList.remove('visible');
+                    curBlock.classList.remove('visible');
                 }
             });
-            close.forEach(function (elClose, j) {
+            closeList.forEach(function (elClose, j) {
                 elClose.addEventListener('click', function (e) {
                     e.preventDefault();
                     elTrigger.classList.remove('active');
-                    block.classList.remove('visible');
+                    curBlock.classList.remove('visible');
                 });
             });
         });
+
         window.addEventListener('click', function (e) {
             e.preventDefault();
-            [].slice.call(document.querySelectorAll(genVar.trigger)).forEach(function (elTrigger, i) {
+            triggerList.forEach(function (elTrigger, i) {
                 if (elTrigger.classList.contains('active')) {
                     var block = document.querySelector('.hd-block[hd-block="' + elTrigger.getAttribute('hd-trigger') + '"]');
                     elTrigger.classList.remove('active');
@@ -204,6 +205,6 @@ var calendar = calendar || {},
 
     };
 
-    eventHandling ();
+    eventHandling (genVar.trigger, genVar.block, genVar.close);
 
 })(calendar, data);
