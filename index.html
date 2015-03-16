@@ -13,9 +13,7 @@
 </head>
 <body>
 <header class="b-header">
-    <div class="c-block top">
-
-    </div>
+    <div class="c-block top"></div>
     <div class="c-block bottom ">
         <div class="w-50perc ta-l f-l va-top pos-rel">
             <button type="button" class="button button-blue add-ev-gen hd-trigger" hd-trigger="add-ev-gen"><span>Добавить</span>
@@ -27,10 +25,10 @@
                 </section>
                 <form id="addEvent-mini">
                     <section class="w-full pad0-20">
-                        <input type="text" class="w-full" placeholder="5 марта, 14:00, День рождения"/>
+                        <input type="text" class="w-full" placeholder="5 марта 2015, 14:00, День рождения"/>
                     </section>
                     <section class="w-full ta-l pad5-20-20">
-                        <input type="button" class="button button-gray" value="Создать"/>
+                        <input type="button" class="button button-gray" value="Создать" onclick="calendar.addEventShort()"/>
                     </section>
                 </form>
             </div>
@@ -547,8 +545,8 @@
                     <textarea class="w-full" name="" id="" cols="30" rows="10"></textarea>
                 </section>
                 <section class="w-full ta-l pad5-20-20">
-                    <input type="button" class="button button-gray" value="Готово">
-                    <input type="button" class="button button-gray mar0-5" value="Удалить">
+                    <input type="button" class="button button-gray" value="Готово" onclick="calendar.addEvent();">
+                    <input type="button" class="button button-gray mar0-5" value="Удалить" onclick="calendar.removeEvent()">
                 </section>
             </form>
         </div>
@@ -556,7 +554,10 @@
 </main>
 
 <!------ JS ----->
-<script type="text/javascript" src="js/calendar.js"></script>
+<script type="text/javascript" src="js/calendar.new.js"></script>
+<script type="text/javascript">
+    calendar.init();
+</script>
 
 </body>
 </html>
