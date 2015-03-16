@@ -1,0 +1,197 @@
+/*---------- cl-table ------------*/
+.cl-block {
+    position: relative;
+}
+
+.cl-table-body {
+    /*position: relative;*/
+}
+
+.cl-table-row {
+    border-top: 1px solid #ebebeb;
+}
+
+.cl-table-row:last-child {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.cl-table-col {
+    width: 129px;
+    height: 128px;
+    font-weight: 400;
+    border-left: 1px solid #ebebeb;
+    position: relative;
+}
+
+.cl-table-col > div {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 128px;
+    height: 127px;
+    padding: 8px;
+    position: absolute;
+    font-size: 11px;
+    color: #999999;
+    text-align: left;
+}
+
+.cl-table-col.today > div {
+    font-weight: 600;
+    background-color: #f4f4f4;
+}
+
+.cl-table-col.has-event > div {
+    background-color: #c2e4fe;
+}
+
+.cl-table-col:last-child {
+    border-right: 1px solid #ebebeb;
+}
+
+.cl-table-col.active > div {
+    padding: 6px;
+    background-color: #e5f1f9;
+    border: 2px solid #8abfe9;
+}
+
+.event-content,
+.event-participants,
+.event-title {
+    color: #666666;
+    cursor: inherit;
+}
+
+.event-title {
+    font-weight: 600;
+    padding: 4px 0;
+    cursor: pointer;
+}
+
+.event-title:hover {
+    text-decoration: underline;
+}
+
+/*---------- hd-block ------------*/
+.hd-block {
+    width: auto;
+    padding: 0;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    box-shadow: 0 0 6px #ccc;
+    position: absolute;
+    visibility: hidden;
+    display: block;
+    z-index: -1000;
+    top: 0;
+    left: 0;
+    text-align: left;
+}
+
+.hd-block .arrows {
+
+}
+
+.hd-block.visible {
+    visibility: visible;
+    z-index: 1000;
+}
+
+.hd-block input {
+    margin-bottom: 5px;
+}
+
+/*---------- s-List ------------*/
+.s-list-block {
+    width: 200px;
+    top: 45px;
+    left: 269px;
+    padding: 5px 0;
+}
+
+.s-list {
+    display: inline-block;
+    width: 195px;
+    padding: 0 8px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 440px;
+}
+
+.s-list-el {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    padding: 5px 0;
+    border-bottom: 1px solid #ebebeb;
+    position: relative;
+    /*height: 48px;*/
+}
+
+.s-list-el > div {
+
+    display: inline-block;
+    padding: 5px;
+    width: 100%;
+}
+
+.s-list-el > div p {
+    height: 16px;
+}
+
+.s-list-el .ev-name {
+    color: #000;
+    font-weight: 600;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    -o-text-overflow: clip;
+}
+
+.s-list-el .ev-date {
+    color: #666666;
+    font-weight: 300;
+    font-size: 11px;
+}
+
+.s-list-el:last-of-type {
+    border-bottom: none;
+}
+
+.s-list-el.active > div,
+.s-list-el:hover > div {
+    background: #27a1ff;
+    color: #fff;
+    cursor: pointer;
+    transition: all 100ms;
+}
+
+.s-list-el.active .ev-name,
+.s-list-el:hover .ev-name,
+.s-list-el.active .ev-date,
+.s-list-el:hover .ev-date {
+    color: #ffffff;
+}
+
+/* --------- Custom Scroll ----------- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(0, 0, 0, 0.4);
+}

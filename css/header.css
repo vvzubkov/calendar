@@ -1,0 +1,10 @@
+.b-header {
+    height: 100px;
+    background: #f4f4f4;
+    box-shadow: 0px 0px 5px #999999;
+}
+
+.b-header > .top,
+.b-header > .bottom {
+    height: 50px;
+}
