@@ -29,6 +29,10 @@ data = data || {};
                 month:'',
                 year:''
             },
+            time:{
+                hour:'',
+                minute:''
+            },
             description: ''
         };
 
@@ -45,12 +49,14 @@ data = data || {};
         genVar.todayDate = new Date();
         genVar.curDate = new Date();
 
-        tempData.id = genVar.todayDate.getTime();
-        data[tempData.id] = tempData;
-        localStorage.setItem("calendar", JSON.stringify(data));
+        //tempData.id = genVar.todayDate.getTime();
+        //data[tempData.id] = tempData;
+        //localStorage.setItem("calendar", JSON.stringify(data));
+
         data = JSON.parse(localStorage.getItem("calendar"));
-        localStorage.clear();
-        console.log(data);
+
+        //localStorage.clear();
+        //console.log(data);
 
         genVar.curDate.setDate(genVar.curDate.getDate() - genVar.curDate.getDay() + 1);
 
