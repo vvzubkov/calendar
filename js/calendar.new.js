@@ -5,7 +5,8 @@
 var calendar = calendar || {},
     data = JSON.parse(localStorage.getItem("calendar"));
 
-data = data || {};
+    data = data || {};
+
 (function (calendar, data) {
 
     var genVar = {
@@ -45,62 +46,42 @@ data = data || {};
         };
     })();
 
-    calendar.init = function () {
-        genVar.todayDate = new Date();
-        genVar.curDate = new Date();
+    function todayCheck ( curDate, todayDate, col ){
+        if ( curDate.getDate() == todayDate.getDate() &&
+            curDate.getMonth() == todayDate.getMonth() &&
+            curDate.getFullYear() == todayDate.getFullYear())
+        {
+            col.classList.add('today')
+        }
+        else if (col.classList.contains('today'))
+        {
+            col.classList.remove('today')
+        }
+    }
 
-        //tempData.id = genVar.todayDate.getTime();
-        //data[tempData.id] = tempData;
-        //localStorage.setItem("calendar", JSON.stringify(data));
-
-        data = JSON.parse(localStorage.getItem("calendar"));
-
-        //localStorage.clear();
-        //console.log(data);
-
-        genVar.curDate.setDate(genVar.curDate.getDate() - genVar.curDate.getDay() + 1);
-
-        document.querySelector(genVar.clTitle).innerHTML = genVar.curDate.getMonthName() + ' ' + genVar.curDate.getFullYear();
-
+    function clMove ( curDate, todayDate, data ) {
+        curDate.setDate(curDate.getDate() - curDate.getDay() + 1);
+        document.querySelector(genVar.clTitle).innerHTML = curDate.getMonthName() + ' ' + curDate.getFullYear();
         [].slice.call(document.querySelectorAll(genVar.clRow)).forEach(function (row, i) {
             [].slice.call(row.querySelectorAll(genVar.clCol)).forEach(function (col, j) {
                 col.querySelector('.day-of-month').innerHTML = '' + genVar.curDate.getDate();
 
                 for(var x in data)
                 {
-                    if ( parseInt(data[x].date.day,10) == parseInt(genVar.curDate.getDay(), 10) &&
-                        parseInt(data[x].date.month,10) == parseInt(genVar.curDate.getMonthName(), 10) &&
-                        parseInt(data[x].date.year,10) == parseInt(genVar.curDate.getFullYear(), 10))
+                    if ( parseInt(data[x].date.day,10) == parseInt(curDate.getDay(), 10) &&
+                        parseInt(data[x].date.month,10) == parseInt(curDate.getMonthName(), 10) &&
+                        parseInt(data[x].date.year,10) == parseInt(curDate.getFullYear(), 10))
                     {
-                        col.setAttribute('date-id', '' + parseInt(genVar.curDate.getTime(), 10));
+                        col.setAttribute('date-id', '' + parseInt(curDate.getTime(), 10));
                     }
                 }
-                if ( genVar.curDate.getDate() == genVar.todayDate.getDate() &&
-                    genVar.curDate.getMonth() == genVar.todayDate.getMonth() &&
-                    genVar.curDate.getFullYear() == genVar.todayDate.getFullYear())
-                {
-                    col.classList.add('today')
-                }
-                else if (col.classList.contains('today'))
-                {
-                    col.classList.remove('today')
-                }
-                genVar.curDate.setDate(genVar.curDate.getDate() + 1);
+
+                todayCheck ( curDate, todayDate, col );
+
+                curDate.setDate(curDate.getDate() + 1);
             })
         });
-    };
-
-    calendar.addEvent = function () {
-
-    };
-
-    calendar.addEventShort = function () {
-
-    };
-
-    calendar.removeEvent = function () {
-
-    };
+    }
 
     function eventHandling () {
         [].slice.call(document.querySelectorAll(genVar.trigger)).forEach(function (elTrigger, i) {
@@ -183,6 +164,45 @@ data = data || {};
             })
         });
     }
+
+    calendar.init = function () {
+        genVar.todayDate = new Date();
+        genVar.curDate = new Date();
+        //tempData.id = genVar.todayDate.getTime();
+        //data[tempData.id] = tempData;
+        //localStorage.setItem("calendar", JSON.stringify(data));
+        data = JSON.parse(localStorage.getItem("calendar"));
+        //localStorage.clear();
+        //console.log(data);
+        clMove ( genVar.curDate, genVar.todayDate, data);
+    };
+
+    calendar.movePrev = function () {
+        var dt = 0;
+        do {
+            genVar.curDate.setDate(genVar.curDate.getDate() - 1);
+            dt++;
+        } while (dt < 70);
+        data = JSON.parse(localStorage.getItem("calendar"));
+        clMove ( genVar.curDate, genVar.todayDate, data);
+    };
+
+    calendar.moveNext = function () {
+        data = JSON.parse(localStorage.getItem("calendar"));
+        clMove ( genVar.curDate, genVar.todayDate, data);
+    };
+
+    calendar.addEvent = function () {
+
+    };
+
+    calendar.addEventShort = function () {
+
+    };
+
+    calendar.removeEvent = function () {
+
+    };
 
     eventHandling ();
 

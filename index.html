@@ -116,14 +116,14 @@
 </header>
 <main class="b-main">
     <div class="c-block pad15-0 ta-l">
-        <button type="button" class="button button-arrow button-prev va-middle"><img src="images/icon-caret-left.png"
-                                                                                     alt=""/>
+        <button type="button" class="button button-arrow button-prev va-middle" onclick="calendar.movePrev();">
+            <img src="images/icon-caret-left.png" alt=""/>
         </button>
         <h3 class="va-middle pad0-10 month-year-title">Февраль 2015</h3>
-        <button type="button" class="button button-arrow button-next va-middle"><img src="images/icon-caret-right.png"
-                                                                                     alt=""/>
+        <button type="button" class="button button-arrow button-next va-middle" onclick="calendar.moveNext();">
+            <img src="images/icon-caret-right.png" alt=""/>
         </button>
-        <button type="button" class="button button-clear button-current va-middle">Сегодня</button>
+        <button type="button" class="button button-clear button-current va-middle" onclick="calendar.init();">Сегодня</button>
     </div>
     <div class="c-block cl-block">
         <table class="cl-table" cellpadding="0" cellspacing="0">
