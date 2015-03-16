@@ -25,17 +25,20 @@
                 <section class="w-full ta-r pad5-0">
                     <button class="button hd-close"><img src="images/icon-close.png" alt=""/></button>
                 </section>
-                <section class="w-full pad0-20">
-                    <input type="text" class="w-full" placeholder="5 марта, 14:00, День рождения"/>
-                </section>
-                <section class="w-full ta-l pad5-20-20">
-                    <button type="button" class="button button-gray">Создать</button>
-                </section>
+                <form id="addEvent-mini">
+                    <section class="w-full pad0-20">
+                        <input type="text" class="w-full" placeholder="5 марта, 14:00, День рождения"/>
+                    </section>
+                    <section class="w-full ta-l pad5-20-20">
+                        <input type="button" class="button button-gray" value="Создать"/>
+                    </section>
+                </form>
             </div>
         </div>
         <div class="w-50perc ta-r f-r pos-rel">
             <img src="images/icon-search.png" class="dib va-middle" alt=""/>
             <input class="s-list-input" type="text" id="search" placeholder="Событие, дата или участник"/>
+
             <div class="hd-block s-list-block" style="">
                 <ul class="s-list">
                     <li class="s-list-el">
@@ -48,6 +51,7 @@
                     <li class="s-list-el">
                         <div>
                             <p class="ev-name">Митинг на Болотной c длинным текстом</p>
+
                             <p class="ev-date">6 марта</p>
                         </div>
                     </li>
@@ -114,10 +118,12 @@
 </header>
 <main class="b-main">
     <div class="c-block pad15-0 ta-l">
-        <button type="button" class="button button-arrow button-prev va-middle"><img src="images/icon-caret-left.png" alt=""/>
+        <button type="button" class="button button-arrow button-prev va-middle"><img src="images/icon-caret-left.png"
+                                                                                     alt=""/>
         </button>
         <h3 class="va-middle pad0-10 month-year-title">Февраль 2015</h3>
-        <button type="button" class="button button-arrow button-next va-middle"><img src="images/icon-caret-right.png" alt=""/>
+        <button type="button" class="button button-arrow button-next va-middle"><img src="images/icon-caret-right.png"
+                                                                                     alt=""/>
         </button>
         <button type="button" class="button button-clear button-current va-middle">Сегодня</button>
     </div>
@@ -128,56 +134,77 @@
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-week">Понедельник</span>, <span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-week">Вторник</span>, <span class="day-of-month">24</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-week">Среда</span>, <span class="day-of-month"></span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-week">Четверг</span>, <span class="day-of-month">26</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-week">Пятница</span>, <span class="day-of-month">27</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-week">Суббота</span>, <span class="day-of-month">28</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-week">Воскресенье</span>, <span class="day-of-month">1</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
@@ -186,114 +213,77 @@
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-            </tr>
-            <tr class="cl-table-row">
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-                        <p class="event-title"></p>
-                        <p class="event-participants"></p>
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-                        <p class="event-title"></p>
-                        <p class="event-participants"></p>
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-                        <p class="event-title"></p>
-                        <p class="event-participants"></p>
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-                        <p class="event-title"></p>
-                        <p class="event-participants"></p>
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-                        <p class="event-title"></p>
-                        <p class="event-participants"></p>
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-                        <p class="event-title"></p>
-                        <p class="event-participants"></p>
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-                        <p class="event-title"></p>
-                        <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
@@ -302,56 +292,77 @@
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
@@ -360,56 +371,156 @@
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
                     <div>
                         <p><span class="day-of-month">23</span></p>
+
                         <p class="event-title"></p>
+
                         <p class="event-participants"></p>
+
+                        <p class="event-content"></p>
+                    </div>
+                </td>
+            </tr>
+            <tr class="cl-table-row">
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-content"></p>
+                    </div>
+                </td>
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-content"></p>
+                    </div>
+                </td>
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-content"></p>
+                    </div>
+                </td>
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-content"></p>
+                    </div>
+                </td>
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-content"></p>
+                    </div>
+                </td>
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-content"></p>
+                    </div>
+                </td>
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
                         <p class="event-content"></p>
                     </div>
                 </td>
@@ -426,18 +537,20 @@
             <section class="w-full ta-r pad5-0">
                 <button class="button hd-close"><img src="images/icon-close.png" alt=""/></button>
             </section>
-            <section class="w-full pad0-20">
-                <input type="text" class="w-full" placeholder="Событие"/>
-                <input type="text" class="w-full" placeholder="День, месяц, год"/>
-                <input type="text" class="w-full" placeholder="Имена участников"/>
-            </section>
-            <section class="w-full pad20-20">
-                <textarea class="w-full" name="" id="" cols="30" rows="10"></textarea>
-            </section>
-            <section class="w-full ta-l pad5-20-20">
-                <button type="button" class="button button-gray">Готово</button>
-                <button type="button" class="button button-gray mar0-5">Удалить</button>
-            </section>
+            <form id="editEvent">
+                <section class="w-full pad0-20">
+                    <input type="text" class="w-full" placeholder="Событие"/>
+                    <input type="text" class="w-full" placeholder="День, месяц, год"/>
+                    <input type="text" class="w-full" placeholder="Имена участников"/>
+                </section>
+                <section class="w-full pad20-20">
+                    <textarea class="w-full" name="" id="" cols="30" rows="10"></textarea>
+                </section>
+                <section class="w-full ta-l pad5-20-20">
+                    <input type="button" class="button button-gray" value="Готово">
+                    <input type="button" class="button button-gray mar0-5" value="Удалить">
+                </section>
+            </form>
         </div>
     </div>
 </main>

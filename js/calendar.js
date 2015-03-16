@@ -50,9 +50,7 @@ var calendar = (function () {
             e.preventDefault();
             var dt = 0;
             do {
-                console.log(dt);
                 curDate.setDate(curDate.getDate() - 1);
-                console.log(curDate);
                 dt++;
             } while (dt < 70);
             document.querySelector('.month-year-title').innerHTML = curDate.getMonthName() + ' ' + curDate.getFullYear();
@@ -179,6 +177,5 @@ var calendar = (function () {
     clSlide();
 
 })();
-
 
 

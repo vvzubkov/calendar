@@ -177,10 +177,10 @@ textarea::-moz-placeholder {
     color: #000;
 }
 
-.button-current
-{
+.button-current {
     margin: 0 10px;
 }
+
 .hd-overlay {
     position: fixed;
     width: 100%;
@@ -192,8 +192,7 @@ textarea::-moz-placeholder {
     opacity: 0;
 }
 
-.month-year-title
-{
+.month-year-title {
     width: 218px;
     text-align: center;
 }
