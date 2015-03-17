@@ -58,32 +58,32 @@ data = data || {};
         [].slice.call(document.querySelectorAll(genVar.clRow)).forEach(function (row, i) {
             [].slice.call(row.querySelectorAll(genVar.clCol)).forEach(function (col, j) {
                 col.querySelector('.day-of-month').innerHTML = '' + genVar.curDate.getDate();
-                col.setAttribute('date', curDate.getFullYear() + ', ' + curDate.getMonth() + ', ' + curDate.getDate());
-
                 col.classList.remove('has-event');
                 col.querySelector('.event-title').innerHTML = '';
                 col.querySelector('.event-participants').innerHTML = '';
                 col.querySelector('.event-description').innerHTML = '';
 
-                var checkDate = new Date(col.getAttribute('date')).getTime();
+                var checkDate = curDate.getTime();
                 data = JSON.parse(localStorage.getItem("calendar"));
 
                 for (var x in data) {
                     if (data[x].id == parseInt(checkDate,10)) {
-                        console.log('date ='+   checkDate);
-                        console.log(col.getAttribute('date').toString());
-
+                        console.log('1');
                         col.querySelector('.event-title').innerHTML = data[x].title.toString();
                         col.querySelector('.event-participants').innerHTML = data[x].participants.toString();
                         col.querySelector('.event-description').innerHTML = data[x].description.toString();
                         col.classList.add('has-event');
                     }
                 }
-
                 todayCheck(curDate, todayDate, col);
                 curDate.setDate(curDate.getDate() + 1);
             })
         });
+        var dt = 0;
+        do {
+            genVar.curDate.setDate(genVar.curDate.getDate() - 1);
+            dt++;
+        } while (dt < 35);
     }
 
     function hdBlockPosition(curBlock, elTrigger, clBlock) {
@@ -126,6 +126,17 @@ data = data || {};
             .forEach(function (elb, i) {
                 elb.classList.remove('visible');
             });
+        [].slice.call(document.querySelectorAll('form'))
+            .forEach(function (elf, i) {
+                [].slice.call(elf.querySelectorAll('input[type=text]'))
+                    .forEach(function (eli, i) {
+                        eli.value = '';
+                    });
+                [].slice.call(elf.querySelectorAll('textarea'))
+                    .forEach(function (eli, i) {
+                        eli.value = '';
+                    });
+            });
     }
 
     function hdBlockOpen(elTrigger, curBlock) {
@@ -150,12 +161,22 @@ data = data || {};
                     if (elTrigger.getAttribute(genVar.trigger) == 'add-edit-ev')
                     {
                         var form = document.getElementById(genVar.form),
-                            date = new Date(elTrigger.getAttribute('date')),
-                            dateString = elTrigger.getAttribute('date').split(', '),
-                            fDate = form.getElementsByClassName(genVar.form + '-date');
+                            fDate = form.getElementsByClassName(genVar.form + '-date'),
+                            date = new Date(genVar.curDate.getTime());
 
-                        dateString[1] = genVar.monthList[dateString[1]];
-                        fDate[0].setAttribute('placeholder', String(dateString[2] + ', ' + dateString[1] + ', ' + dateString[0]));
+                        [].slice.call(document.querySelectorAll(genVar.clRow)).forEach(function (row, i) {
+                            [].slice.call(row.querySelectorAll(genVar.clCol)).forEach(function (col, j) {
+                                if (col.classList.contains('active')){
+                                    var dt = 0;
+                                    do {
+                                        date.setDate(date.getDate() + 1);
+                                        dt++;
+                                    } while (dt < (i*7)+j);
+                                    fDate[0].setAttribute('placeholder', (date.getDate() + ', ' + date.getMonthName() + ', ' + date.getFullYear()).toString());
+                                }
+                            })
+                        });
+
 
                         data = JSON.parse(localStorage.getItem("calendar"));
                         //console.log(data);
@@ -173,7 +194,6 @@ data = data || {};
                 });
             });
         });
-
         window.addEventListener('click', function (e) {
             e.preventDefault();
             e = e || window.event;
@@ -217,20 +237,37 @@ data = data || {};
         do {
             genVar.curDate.setDate(genVar.curDate.getDate() - 1);
             dt++;
-        } while (dt < 70);
+        } while (dt < 35);
         data = JSON.parse(localStorage.getItem("calendar"));
         clDraw(genVar.curDate, genVar.todayDate, data);
     };
 
     calendar.moveNext = function () {
+        var dt = 0;
+        do {
+            genVar.curDate.setDate(genVar.curDate.getDate() + 1);
+            dt++;
+        } while (dt < 35);
         data = JSON.parse(localStorage.getItem("calendar"));
         clDraw(genVar.curDate, genVar.todayDate, data);
     };
 
     calendar.addEvent = function () {
-        var col = document.querySelector('.' + genVar.trigger + '.active'),
-            form = document.getElementById(genVar.form),
-            date = new Date(col.getAttribute('date'));
+        var form = document.getElementById(genVar.form),
+            date  = new Date(genVar.curDate.getTime());
+
+        [].slice.call(document.querySelectorAll(genVar.clRow)).forEach(function (row, i) {
+            [].slice.call(row.querySelectorAll(genVar.clCol)).forEach(function (col, j) {
+                if (col.classList.contains('active')){
+                    var dt = 0;
+                    do {
+                        date.setDate(date.getDate() + 1);
+                        dt++;
+                    } while (dt < (i*7)+j);
+
+                }
+            })
+        });
 
         tempData.id = parseInt(date.getTime(),10);
 
@@ -248,15 +285,11 @@ data = data || {};
         data[tempData.id] = tempData;
 
         localStorage.setItem("calendar", JSON.stringify(data));
+
         hdBlockClose();
 
         data = JSON.parse(localStorage.getItem("calendar"));
         //console.log(data);
-        var dt = 0;
-        do {
-            genVar.curDate.setDate(genVar.curDate.getDate() - 1);
-            dt++;
-        } while (dt < 35);
         clDraw(genVar.curDate, genVar.todayDate, data);
     };
 
@@ -265,24 +298,29 @@ data = data || {};
     };
 
     calendar.removeEvent = function () {
-        var col = document.querySelector('.' + genVar.trigger + '.active'),
-            checkDate = new Date(col.getAttribute('date')).getTime();
+        var date  = new Date(genVar.curDate.getTime());
+
+        [].slice.call(document.querySelectorAll(genVar.clRow)).forEach(function (row, i) {
+            [].slice.call(row.querySelectorAll(genVar.clCol)).forEach(function (col, j) {
+                if (col.classList.contains('active')){
+                    var dt = 0;
+                    do {
+                        date.setDate(date.getDate() + 1);
+                        dt++;
+                    } while (dt < (i*7)+j);
+
+                }
+            })
+        });
 
         data = JSON.parse(localStorage.getItem("calendar"));
-        //console.log(data);
         for (var x in data) {
-            if (data[x].id == parseInt(checkDate,10)) {
+            if (data[x].id == parseInt(date.getTime(),10)) {
                 delete data[x];
                 localStorage.setItem("calendar", JSON.stringify(data));
             }
         }
         data = JSON.parse(localStorage.getItem("calendar"));
-        //console.log(data);
-        var dt = 0;
-        do {
-            genVar.curDate.setDate(genVar.curDate.getDate() - 1);
-            dt++;
-        } while (dt < 35);
         clDraw(genVar.curDate, genVar.todayDate, data);
         hdBlockClose();
     };
