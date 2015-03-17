@@ -536,13 +536,16 @@
                 <button class="button hd-close"><img src="images/icon-close.png" alt=""/></button>
             </section>
             <form id="editEvent">
-                <section class="w-full pad0-20">
-                    <input type="text" class="w-full" placeholder="Событие"/>
-                    <input type="text" class="w-full" placeholder="День, месяц, год"/>
-                    <input type="text" class="w-full" placeholder="Имена участников"/>
+                <section class="w-full pad0-20 ta-l">
+                    <input type="text" class="w-full editEvent-title" placeholder="Событие" value=""/>
+                    <input type="text" class="w-full editEvent-date" placeholder="День, месяц, год" value=""/>
+                    <!--<label class="pad0-5">Участники:</label>-->
+                    <input type="text" class="w-full editEvent-participants" placeholder="Имена участников" value="" />
                 </section>
                 <section class="w-full pad20-20">
-                    <textarea class="w-full" name="" id="" cols="30" rows="10"></textarea>
+                    <textarea class="w-full editEvent-text" name="" id="" cols="30" rows="10" >
+
+                    </textarea>
                 </section>
                 <section class="w-full ta-l pad5-20-20">
                     <input type="button" class="button button-gray" value="Готово" onclick="calendar.addEvent();">
