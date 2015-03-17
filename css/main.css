@@ -53,6 +53,7 @@
 .cl-table-col.has-event {
     cursor: pointer;
 }
+
 .cl-table-col.active > div {
     padding: 6px;
     background-color: #e5f1f9;

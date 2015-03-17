@@ -58,7 +58,8 @@ data = data || {};
         [].slice.call(document.querySelectorAll(genVar.clRow)).forEach(function (row, i) {
             [].slice.call(row.querySelectorAll(genVar.clCol)).forEach(function (col, j) {
                 col.querySelector('.day-of-month').innerHTML = '' + genVar.curDate.getDate();
-                col.setAttribute('date',curDate.getFullYear()  + ', ' + curDate.getMonth() + ', ' + curDate.getDate());
+                col.setAttribute('date', curDate.getFullYear() + ', ' + curDate.getMonth() + ', ' + curDate.getDate());
+
                 col.classList.remove('has-event');
                 col.querySelector('.event-title').innerHTML = '';
                 col.querySelector('.event-participants').innerHTML = '';
@@ -67,17 +68,17 @@ data = data || {};
                 var checkDate = new Date(col.getAttribute('date')).getTime();
                 data = JSON.parse(localStorage.getItem("calendar"));
 
-                    for (var x in data)
-                    {
-                        console.log();
-                        if (data[x].id == checkDate)
-                        {
-                            col.querySelector('.event-title').innerHTML = String(data[x].title);
-                            col.querySelector('.event-participants').innerHTML = String(data[x].participants);
-                            col.querySelector('.event-description').innerHTML = String(data[x].description);
-                            col.classList.add('has-event');
-                        }
+                for (var x in data) {
+                    if (data[x].id == parseInt(checkDate,10)) {
+                        console.log('date ='+   checkDate);
+                        console.log(col.getAttribute('date').toString());
+
+                        col.querySelector('.event-title').innerHTML = data[x].title.toString();
+                        col.querySelector('.event-participants').innerHTML = data[x].participants.toString();
+                        col.querySelector('.event-description').innerHTML = data[x].description.toString();
+                        col.classList.add('has-event');
                     }
+                }
 
                 todayCheck(curDate, todayDate, col);
                 curDate.setDate(curDate.getDate() + 1);
@@ -147,17 +148,19 @@ data = data || {};
                         hdBlockOpen(elTrigger, curBlock);
                     }, 50);
                     if (elTrigger.getAttribute(genVar.trigger) == 'add-edit-ev')
+                    {
                         var form = document.getElementById(genVar.form),
                             date = new Date(elTrigger.getAttribute('date')),
                             dateString = elTrigger.getAttribute('date').split(', '),
                             fDate = form.getElementsByClassName(genVar.form + '-date');
 
-                    dateString[1] = genVar.monthList[dateString[1]];
-                    fDate[0].setAttribute('placeholder', String(dateString[2] + ', ' + dateString[1] + ', ' + dateString[0]));
+                        dateString[1] = genVar.monthList[dateString[1]];
+                        fDate[0].setAttribute('placeholder', String(dateString[2] + ', ' + dateString[1] + ', ' + dateString[0]));
 
-                    data = JSON.parse(localStorage.getItem("calendar"));
-                    console.log(data);
-                    hdBlockPosition(curBlock, elTrigger, clBlock);
+                        data = JSON.parse(localStorage.getItem("calendar"));
+                        //console.log(data);
+                        hdBlockPosition(curBlock, elTrigger, clBlock);
+                    }
                 }
                 else {
                     hdBlockClose();
@@ -205,7 +208,7 @@ data = data || {};
         data = {};
         localStorage.setItem("calendar", JSON.stringify(data));
         data = JSON.parse(localStorage.getItem("calendar"));
-
+        console.clear();
         clDraw(genVar.curDate, genVar.todayDate, data);
     };
 
@@ -229,18 +232,18 @@ data = data || {};
             form = document.getElementById(genVar.form),
             date = new Date(col.getAttribute('date'));
 
-        tempData.id = date.getTime();
+        tempData.id = parseInt(date.getTime(),10);
 
         if (form.getElementsByClassName(genVar.form + '-title')[0].value)
-        tempData.title = form.getElementsByClassName(genVar.form + '-title')[0].value;
-        else tempData.title ='Заголовок пуст';
+            tempData.title = form.getElementsByClassName(genVar.form + '-title')[0].value.toString();
+        else tempData.title = 'Заголовок пуст';
 
         if (form.getElementsByClassName(genVar.form + '-date')[0].value)
-        tempData.date = form.getElementsByClassName(genVar.form + '-date')[0].value;
-        else tempData.date = String(form.getElementsByClassName(genVar.form + '-date')[0].getAttribute('placeholder'));
+            tempData.date = form.getElementsByClassName(genVar.form + '-date')[0].value;
+        else tempData.date = form.getElementsByClassName(genVar.form + '-date')[0].getAttribute('placeholder').toString();
 
-        tempData.participants = form.getElementsByClassName(genVar.form + '-participants')[0].value;
-        tempData.description = form.getElementsByClassName(genVar.form + '-description')[0].value;
+        tempData.participants = form.getElementsByClassName(genVar.form + '-participants')[0].value.toString();
+        tempData.description = form.getElementsByClassName(genVar.form + '-description')[0].value.toString();
 
         data[tempData.id] = tempData;
 
@@ -248,6 +251,7 @@ data = data || {};
         hdBlockClose();
 
         data = JSON.parse(localStorage.getItem("calendar"));
+        //console.log(data);
         var dt = 0;
         do {
             genVar.curDate.setDate(genVar.curDate.getDate() - 1);
@@ -262,9 +266,24 @@ data = data || {};
 
     calendar.removeEvent = function () {
         var col = document.querySelector('.' + genVar.trigger + '.active'),
-            form = document.getElementById(genVar.form),
-            date = new Date(col.getAttribute('date'));
+            checkDate = new Date(col.getAttribute('date')).getTime();
 
+        data = JSON.parse(localStorage.getItem("calendar"));
+        //console.log(data);
+        for (var x in data) {
+            if (data[x].id == parseInt(checkDate,10)) {
+                delete data[x];
+                localStorage.setItem("calendar", JSON.stringify(data));
+            }
+        }
+        data = JSON.parse(localStorage.getItem("calendar"));
+        //console.log(data);
+        var dt = 0;
+        do {
+            genVar.curDate.setDate(genVar.curDate.getDate() - 1);
+            dt++;
+        } while (dt < 35);
+        clDraw(genVar.curDate, genVar.todayDate, data);
         hdBlockClose();
     };
 
