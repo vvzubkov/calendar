@@ -2,7 +2,7 @@
 <html>
 <head lang="ru">
     <meta charset="UTF-8">
-    <title>Index - New Slider</title>
+    <title>Event Calendar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!------ CSS ----->
@@ -16,7 +16,9 @@
     <div class="c-block top"></div>
     <div class="c-block bottom ">
         <div class="w-50perc ta-l f-l va-top pos-rel">
-            <button type="button" class="button button-blue add-ev-gen hd-trigger" hd-trigger="add-ev-gen"><span>Добавить</span>
+            <button type="button" class="button button-blue add-ev-gen hd-trigger" hd-trigger="add-ev-gen"
+                    onclick="calendar.clearStart()">
+                <span>Добавить</span>
             </button>
             <button type="button" class="button button-blue update-calendar"><span>Обновить</span></button>
             <div class="hd-block" hd-block="add-ev-gen" style="width:305px; top:45px;">
@@ -137,7 +139,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -148,7 +150,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -159,7 +161,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -170,7 +172,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -181,7 +183,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -192,7 +194,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -203,7 +205,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
             </tr>
@@ -216,7 +218,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -227,7 +229,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -238,7 +240,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -249,7 +251,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -260,7 +262,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -271,7 +273,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -282,86 +284,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-            </tr>
-            <tr class="cl-table-row">
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-
-                        <p class="event-title"></p>
-
-                        <p class="event-participants"></p>
-
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-
-                        <p class="event-title"></p>
-
-                        <p class="event-participants"></p>
-
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-
-                        <p class="event-title"></p>
-
-                        <p class="event-participants"></p>
-
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-
-                        <p class="event-title"></p>
-
-                        <p class="event-participants"></p>
-
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-
-                        <p class="event-title"></p>
-
-                        <p class="event-participants"></p>
-
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-
-                        <p class="event-title"></p>
-
-                        <p class="event-participants"></p>
-
-                        <p class="event-content"></p>
-                    </div>
-                </td>
-                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
-                    <div>
-                        <p><span class="day-of-month">23</span></p>
-
-                        <p class="event-title"></p>
-
-                        <p class="event-participants"></p>
-
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
             </tr>
@@ -374,7 +297,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -385,7 +308,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -396,7 +319,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -407,7 +330,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -418,7 +341,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -429,7 +352,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -440,7 +363,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
             </tr>
@@ -453,7 +376,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -464,7 +387,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -475,7 +398,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -486,7 +409,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -497,7 +420,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -508,7 +431,7 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
                     </div>
                 </td>
                 <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
@@ -519,7 +442,86 @@
 
                         <p class="event-participants"></p>
 
-                        <p class="event-content"></p>
+                        <p class="event-description"></p>
+                    </div>
+                </td>
+            </tr>
+            <tr class="cl-table-row">
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-description"></p>
+                    </div>
+                </td>
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-description"></p>
+                    </div>
+                </td>
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-description"></p>
+                    </div>
+                </td>
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-description"></p>
+                    </div>
+                </td>
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-description"></p>
+                    </div>
+                </td>
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-description"></p>
+                    </div>
+                </td>
+                <td class="cl-table-col hd-trigger" hd-trigger="add-edit-ev">
+                    <div>
+                        <p><span class="day-of-month">23</span></p>
+
+                        <p class="event-title"></p>
+
+                        <p class="event-participants"></p>
+
+                        <p class="event-description"></p>
                     </div>
                 </td>
             </tr>
@@ -537,13 +539,13 @@
             </section>
             <form id="editEvent">
                 <section class="w-full pad0-20 ta-l">
-                    <input type="text" class="w-full editEvent-title" placeholder="Событие" value=""/>
-                    <input type="text" class="w-full editEvent-date" placeholder="День, месяц, год" value=""/>
+                    <input type="text" class="w-full editEvent-title" placeholder="Событие"/>
+                    <input type="text" class="w-full editEvent-date" placeholder="День, месяц, год"/>
                     <!--<label class="pad0-5">Участники:</label>-->
-                    <input type="text" class="w-full editEvent-participants" placeholder="Имена участников" value="" />
+                    <input type="text" class="w-full editEvent-participants" placeholder="Имена участников"/>
                 </section>
                 <section class="w-full pad20-20">
-                    <textarea class="w-full editEvent-text" name="" id="" cols="30" rows="10" >
+                    <textarea class="w-full editEvent-description" cols="30" rows="10">
 
                     </textarea>
                 </section>
@@ -559,7 +561,7 @@
 <!------ JS ----->
 <script type="text/javascript" src="js/calendar.new.js"></script>
 <script type="text/javascript">
-    calendar.init();
+    calendar.clearStart();
 </script>
 
 </body>

@@ -49,10 +49,10 @@ h3 {
 }
 
 /*------- INPUT - TEXTAREA --------*/
-input[type=button]
-{
+input[type=button] {
     cursor: pointer;
 }
+
 input,
 textarea {
     display: inline-block;
@@ -138,6 +138,7 @@ input.editEvent-participants:read-only {
     font-size: 12px;
 }
 
+/*------- INPUT - TEXTAREA --------*/
 .c-block {
     width: 900px;
     margin: 0 auto;
