@@ -19,17 +19,17 @@
             <input type="button" class="button button-blue add-ev-gen hd-trigger" hd-trigger="add-ev-gen"
                    value="Добавить"/>
             <input type="button" class="button button-blue update-calendar"
-                   value="Обновить" onclick="calendar.clearStart()"/>
+                   value="Обновить" onclick="calendar.init()"/>
             <div class="hd-block" hd-block="add-ev-gen" style="width:305px; top:45px;">
                 <section class="w-full ta-r pad5-0">
                     <button class="button hd-close"><img src="images/icon-close.png" alt=""/></button>
                 </section>
-                <form id="addEvent-mini">
+                <form id="addEvent">
                     <section class="w-full pad0-20">
-                        <input type="text" class="w-full" placeholder="5 марта 2015, 14:00, День рождения"/>
+                        <input type="text" class="w-full addEvent-title" placeholder="5 марта 2015, 14:00, День рождения" onkeydown="addEventKeyDown()"/>
                     </section>
                     <section class="w-full ta-l pad5-20-20">
-                        <input type="button" class="button button-gray" value="Создать" onclick="calendar.addEventShort()"/>
+                        <input type="button" class="button button-gray" value="Создать" onclick="calendar.addEvent()"/>
                     </section>
                 </form>
             </div>
@@ -124,7 +124,7 @@
         <button type="button" class="button button-arrow button-next va-middle" onclick="calendar.moveNext();">
             <img src="images/icon-caret-right.png" alt=""/>
         </button>
-        <button type="button" class="button button-clear button-current va-middle" onclick="calendar.init();">Сегодня</button>
+        <button type="button" class="button button-clear button-current va-middle" onclick="calendar.onStart();">Сегодня</button>
     </div>
     <div class="c-block cl-block">
         <table class="cl-table" cellpadding="0" cellspacing="0">
@@ -540,7 +540,7 @@
                 <section class="w-full pad0-20 ta-l">
                     <input type="text" class="w-full editEvent-title" placeholder="Событие"/>
                     <input type="text" class="w-full editEvent-date" placeholder="День, месяц, год"/>
-                    <!--<label class="pad0-5">Участники:</label>-->
+                    <label class="pad0-5" class="editEvent-participants-label" style="display: none;">Участники:</label>
                     <input type="text" class="w-full editEvent-participants" placeholder="Имена участников"/>
                 </section>
                 <section class="w-full pad20-20">
@@ -549,7 +549,7 @@
                     </textarea>
                 </section>
                 <section class="w-full ta-l pad5-20-20">
-                    <input type="button" class="button button-gray" value="Готово" onclick="calendar.addEvent();">
+                    <input type="button" class="button button-gray" value="Готово" onclick="calendar.editEvent();">
                     <input type="button" class="button button-gray mar0-5" value="Удалить" onclick="calendar.removeEvent()">
                 </section>
             </form>
@@ -560,7 +560,7 @@
 <!------ JS ----->
 <script type="text/javascript" src="js/calendar.new.js"></script>
 <script type="text/javascript">
-    calendar.clearStart();
+    calendar.init();
 </script>
 
 </body>
