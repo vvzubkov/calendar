@@ -36,80 +36,10 @@
         </div>
         <div class="w-50perc ta-r f-r pos-rel">
             <img src="images/icon-search.png" class="dib va-middle" alt=""/>
-            <input class="s-list-input" type="text" id="search" placeholder="Событие, дата или участник"/>
+            <input class="s-list-input" type="text" id="search_input" placeholder="Событие, дата или участник" autocomplete onkeyup="calendar.liveSearch()"/>
 
-            <div class="hd-block s-list-block" style="">
-                <ul class="s-list">
-                    <li class="s-list-el">
-                        <div>
-                            <p class="ev-name">Митинг на Болотной</p>
-
-                            <p class="ev-date">6 марта</p>
-                        </div>
-                    </li>
-                    <li class="s-list-el">
-                        <div>
-                            <p class="ev-name">Митинг на Болотной c длинным текстом</p>
-
-                            <p class="ev-date">6 марта</p>
-                        </div>
-                    </li>
-                    <li class="s-list-el">
-                        <div>
-                            <p class="ev-name">Митинг на Болотной</p>
-
-                            <p class="ev-date">6 марта</p>
-                        </div>
-                    </li>
-                    <li class="s-list-el">
-                        <div>
-                            <p class="ev-name">Митинг на Болотной</p>
-
-                            <p class="ev-date">6 марта</p>
-                        </div>
-                    </li>
-                    <li class="s-list-el">
-                        <div>
-                            <p class="ev-name">Митинг на Болотной</p>
-
-                            <p class="ev-date">6 марта</p>
-                        </div>
-                    </li>
-                    <li class="s-list-el">
-                        <div>
-                            <p class="ev-name">Митинг на Болотной</p>
-
-                            <p class="ev-date">6 марта</p>
-                        </div>
-                    </li>
-                    <li class="s-list-el">
-                        <div>
-                            <p class="ev-name">Митинг на Болотной</p>
-
-                            <p class="ev-date">6 марта</p>
-                        </div>
-                    </li>
-                    <li class="s-list-el">
-                        <div>
-                            <p class="ev-name">Митинг на Болотной</p>
-
-                            <p class="ev-date">6 марта</p>
-                        </div>
-                    </li>
-                    <li class="s-list-el">
-                        <div>
-                            <p class="ev-name">Митинг на Болотной</p>
-
-                            <p class="ev-date">6 марта</p>
-                        </div>
-                    </li>
-                    <li class="s-list-el">
-                        <div>
-                            <p class="ev-name">Митинг на Болотной</p>
-
-                            <p class="ev-date">6 марта</p>
-                        </div>
-                    </li>
+            <div class="hd-block s-list-block" id="search_block" style="">
+                <ul class="s-list" id="search_list">
                 </ul>
             </div>
         </div>

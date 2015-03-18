@@ -50,11 +50,13 @@
 }
 
 .cl-table-col.active,
-.cl-table-col.has-event {
+.cl-table-col.has-event,
+.cl-table-col.detected {
     cursor: pointer;
 }
 
-.cl-table-col.active > div {
+.cl-table-col.active > div,
+.cl-table-col.detected > div {
     padding: 6px;
     background-color: #e5f1f9;
     border: 2px solid #8abfe9;

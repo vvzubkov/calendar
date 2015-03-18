@@ -53,7 +53,7 @@ data = data || {};
         };
     })();
 
-    function find (arr, value) {
+    function find(arr, value) {
         var tmp = arr.length;
         while (tmp--) {
             if (arr[tmp] == value) return tmp;
@@ -61,7 +61,7 @@ data = data || {};
         return false;
     }
 
-    function todayCheck (curDate, todayDate, col) {
+    function todayCheck(curDate, todayDate, col) {
         if (curDate.getDate() == todayDate.getDate() &&
             curDate.getMonth() == todayDate.getMonth() &&
             curDate.getFullYear() == todayDate.getFullYear()) {
@@ -72,7 +72,7 @@ data = data || {};
         }
     }
 
-    function findColDate (date) {
+    function findColDate(date) {
         [].slice.call(document.querySelectorAll(genVar.clRow)).forEach(function (row, i) {
             [].slice.call(row.querySelectorAll(genVar.clCol)).forEach(function (col, j) {
                 if (col.classList.contains('active')) {
@@ -87,7 +87,7 @@ data = data || {};
         });
     }
 
-    function clDraw (curDate, todayDate) {
+    function clDraw(curDate, todayDate) {
         curDate.setDate(curDate.getDate() - curDate.getDay() + 1);
         document.querySelector(genVar.clTitle).innerHTML = curDate.getMonthName() + ' ' + curDate.getFullYear();
         [].slice.call(document.querySelectorAll(genVar.clRow)).forEach(function (row, i) {
@@ -99,7 +99,7 @@ data = data || {};
                 col.querySelector('.event-description').innerHTML = '';
 
                 var checkDate = new Date(curDate.getTime());
-                    checkDate = checkDate.getTime();
+                checkDate = checkDate.getTime();
                 data = JSON.parse(localStorage.getItem("calendar"));
 
                 for (var x in data) {
@@ -108,6 +108,7 @@ data = data || {};
                         col.querySelector('.event-participants').innerHTML = data[x].participants.toString();
                         col.querySelector('.event-description').innerHTML = data[x].description.toString();
                         col.classList.add('has-event');
+                        col.setAttribute('id', data[x].id);
                     }
                 }
                 todayCheck(curDate, todayDate, col);
@@ -121,7 +122,7 @@ data = data || {};
         } while (dt < 35);
     }
 
-    function hdBlockPosition (curBlock, elTrigger, clBlock) {
+    function hdBlockPosition(curBlock, elTrigger, clBlock) {
         if ((curBlock.offsetWidth + elTrigger.offsetLeft + elTrigger.offsetWidth)
             > document.querySelector(clBlock).offsetWidth) {
             curBlock.classList.remove('right');
@@ -152,7 +153,7 @@ data = data || {};
         }
     }
 
-    function hdBlockClose () {
+    function hdBlockClose() {
         [].slice.call(document.querySelectorAll('.' + genVar.trigger))
             .forEach(function (elt, i) {
                 elt.classList.remove('active');
@@ -178,13 +179,13 @@ data = data || {};
         editForm.description[0].removeAttribute('readonly');
     }
 
-    function hdBlockOpen (elTrigger, curBlock) {
+    function hdBlockOpen(elTrigger, curBlock) {
         elTrigger.classList.add('active');
         curBlock.classList.add('visible');
 
     }
 
-    function eventHandling (trigger, block, close, clBlock) {
+    function eventHandling(trigger, block, close, clBlock) {
         var triggerList = [].slice.call(document.querySelectorAll('.' + trigger));
 
         triggerList.forEach(function (elTrigger, i) {
@@ -205,46 +206,46 @@ data = data || {};
                             editForm.date[0].setAttribute('placeholder', (date.getDate() + ', ' + date.getMonthName() + ', ' + date.getFullYear()).toString());
                             for (var x in data) {
                                 if (data[x].id == parseInt(checkDate, 10)) {
-                                    if (data[x].title.toString() == ''){
+                                    if (data[x].title.toString() == '') {
                                         editForm.title[0].removeAttribute('readonly');
                                     }
                                     else {
                                         editForm.title[0].value = data[x].title.toString();
                                         editForm.title[0].readOnly = true;
-                                        editForm.title[0].addEventListener('click',function (){
+                                        editForm.title[0].addEventListener('click', function () {
                                             this.removeAttribute('readonly');
                                         });
                                     }
 
-                                    if (data[x].date.toString() == ''){
+                                    if (data[x].date.toString() == '') {
                                         editForm.date[0].removeAttribute('readonly');
                                     }
                                     else {
                                         editForm.date[0].value = data[x].date.toString();
                                         editForm.date[0].readOnly = true;
-                                        editForm.date[0].addEventListener('click',function (){
+                                        editForm.date[0].addEventListener('click', function () {
                                             this.removeAttribute('readonly');
                                         });
                                     }
 
-                                    if (data[x].participants.toString() == ''){
+                                    if (data[x].participants.toString() == '') {
                                         editForm.participants[0].removeAttribute('readonly');
                                     }
                                     else {
                                         editForm.participants[0].value = data[x].participants.toString();
                                         editForm.participants[0].readOnly = true;
-                                        editForm.participants[0].addEventListener('click',function (){
+                                        editForm.participants[0].addEventListener('click', function () {
                                             this.removeAttribute('readonly');
                                         });
                                     }
 
-                                    if (data[x].description.toString() == ''){
+                                    if (data[x].description.toString() == '') {
                                         editForm.description[0].removeAttribute('readonly');
                                     }
                                     else {
                                         editForm.description[0].value = data[x].description.toString();
                                         editForm.description[0].readOnly = true;
-                                        editForm.description[0].addEventListener('click',function (){
+                                        editForm.description[0].addEventListener('click', function () {
                                             this.removeAttribute('readonly');
                                         });
                                     }
@@ -279,6 +280,46 @@ data = data || {};
         });
     }
 
+    calendar.liveSearch = function () {
+        var resultBlock = document.getElementById('search_block'),
+            resultList = document.getElementById('search_list'),
+            resultListEl = document.getElementsByClassName('s-list-el'),
+            searchInput = document.getElementById('search_input'),
+            initValue = '';
+
+        searchInput.addEventListener('keyup', function(e){
+            resultBlock.classList.remove('visible');
+            resultList.innerHTML = '';
+            switch(e.keyCode) {
+                case 13:  // enter
+                case 27:  // escape
+                case 38:  // up
+                case 40:  // down
+                    break;
+                default:
+                    if(this.value.length > 1){
+
+                        initValue = this.value;
+                        data = JSON.parse(localStorage.getItem("calendar"));
+                        for (var x in data) {
+                            if (data[x].title.toLowerCase().indexOf(initValue.toLowerCase())> -1)
+                            {
+                                resultBlock.classList.add('visible');
+                                resultList.innerHTML +=
+                                    ('<li class="s-list-el" data-id="'+ data[x].id +'">'+
+                                    '<div>'+
+                                        '<p class="ev-name">'+ data[x].title +'</p>'+
+                                        '<p class="ev-date">'+ data[x].date +'</p>'+
+                                    '</div>'+
+                                    '</li>');
+                            }
+                        }
+                    }
+                    break;
+            }
+        });
+    };
+
     calendar.onStart = function () {
         genVar.curDate = new Date(genVar.todayDate.getTime());
         data = JSON.parse(localStorage.getItem("calendar"));
@@ -287,7 +328,9 @@ data = data || {};
 
     calendar.init = function () {
         genVar.todayDate = new Date();
-        genVar.todayDate = new Date(genVar.todayDate.getFullYear() + ', ' + (genVar.todayDate.getMonth()+1) + ', ' + genVar.todayDate.getDate());
+        genVar.todayDate = new Date(genVar.todayDate.getFullYear() + ', '
+                                    + (genVar.todayDate.getMonth() + 1) + ', '
+                                    + genVar.todayDate.getDate());
         genVar.curDate = new Date(genVar.todayDate.getTime());
         data = {};
         localStorage.setItem("calendar", JSON.stringify(data));
@@ -345,7 +388,7 @@ data = data || {};
         var strDate = str[0].split(' '),
             strTime = str[1],
             strTitle = str[2],
-            date  = new Date(strDate[2] + ', ' + (find(genVar.monthList, strDate[1])+1) + ', ' + strDate[0]);
+            date = new Date(strDate[2] + ', ' + (find(genVar.monthList, strDate[1]) + 1) + ', ' + strDate[0]);
 
         tempData.id = parseInt(date.getTime(), 10);
 
@@ -385,11 +428,8 @@ data = data || {};
 
 })(calendar, data);
 
-
-function addEventKeyDown ()
-{
-    if (event.keyCode == 13)
-    {
+function addEventKeyDown() {
+    if (event.keyCode == 13) {
         event.cancelBubble = true;
         event.returnValue = false;
         calendar.addEvent();
