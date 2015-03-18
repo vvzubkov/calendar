@@ -14,7 +14,7 @@ data = data || {};
             block: 'hd-block',
             close: 'hd-close',
             clBlock: '.cl-block',
-            clTable: '.cl-table',
+            clTable: '.cl-table-body',
             clTitle: '.month-year-title',
             clRow: '.cl-table-row',
             clCol: '.cl-table-col',
@@ -92,29 +92,30 @@ data = data || {};
         document.querySelector(genVar.clTitle).innerHTML = curDate.getMonthName() + ' ' + curDate.getFullYear();
         [].slice.call(document.querySelectorAll(genVar.clRow)).forEach(function (row, i) {
             [].slice.call(row.querySelectorAll(genVar.clCol)).forEach(function (col, j) {
-                col.querySelector('.day-of-month').innerHTML = '' + genVar.curDate.getDate();
-                col.classList.remove('has-event');
-                col.querySelector('.event-title').innerHTML = '';
-                col.querySelector('.event-participants').innerHTML = '';
-                col.querySelector('.event-description').innerHTML = '';
+            col.querySelector('.day-of-month').innerHTML = '' + genVar.curDate.getDate();
+            col.classList.remove('has-event');
+            col.querySelector('.event-title').innerHTML = '';
+            col.querySelector('.event-participants').innerHTML = '';
+            col.querySelector('.event-description').innerHTML = '';
 
-                var checkDate = new Date(curDate.getTime());
-                checkDate = checkDate.getTime();
-                data = JSON.parse(localStorage.getItem("calendar"));
+            var checkDate = new Date(curDate.getTime());
+            checkDate = checkDate.getTime();
+            data = JSON.parse(localStorage.getItem("calendar"));
 
-                for (var x in data) {
-                    if (data[x].id == parseInt(checkDate, 10)) {
-                        col.querySelector('.event-title').innerHTML = data[x].title.toString();
-                        col.querySelector('.event-participants').innerHTML = data[x].participants.toString();
-                        col.querySelector('.event-description').innerHTML = data[x].description.toString();
-                        col.classList.add('has-event');
-                        col.setAttribute('id', data[x].id);
-                    }
+            for (var x in data) {
+                if (data[x].id == parseInt(checkDate, 10)) {
+                    col.querySelector('.event-title').innerHTML = data[x].title.toString();
+                    col.querySelector('.event-participants').innerHTML = data[x].participants.toString();
+                    col.querySelector('.event-description').innerHTML = data[x].description.toString();
+                    col.classList.add('has-event');
+                    col.setAttribute('id', data[x].id);
                 }
-                todayCheck(curDate, todayDate, col);
-                curDate.setDate(curDate.getDate() + 1);
-            })
-        });
+            }
+            todayCheck(curDate, todayDate, col);
+            curDate.setDate(curDate.getDate() + 1);
+                })
+            });
+
         var dt = 0;
         do {
             genVar.curDate.setDate(genVar.curDate.getDate() - 1);
@@ -186,9 +187,11 @@ data = data || {};
     }
 
     function eventHandling(trigger, block, close, clBlock) {
-        var triggerList = [].slice.call(document.querySelectorAll('.' + trigger));
+        var triggerList = [].slice.call(document.getElementsByClassName(trigger));
+
 
         triggerList.forEach(function (elTrigger, i) {
+
             var curBlock = document.querySelector('.' + block + '[' + block + '="' + elTrigger.getAttribute(trigger) + '"]'),
                 closeList = [].slice.call(curBlock.querySelectorAll('.' + close));
 
