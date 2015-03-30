@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!------ CSS ----->
-    <link rel="stylesheet" href="css/reset.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/modifier.css"/>
+    <link rel="stylesheet" href="src/styles/reset.css"/>
+    <link rel="stylesheet" href="src/styles/style.css"/>
+    <link rel="stylesheet" href="src/styles/modifier.css"/>
 
 </head>
 <body>
@@ -23,7 +23,7 @@
 
             <div class="hd-block" hd-block="add-ev-gen" style="width:305px; top:45px;">
                 <section class="w-full ta-r pad5-0">
-                    <button class="button hd-close"><img src="images/icon-close.png" alt=""/></button>
+                    <button class="button hd-close"><img src="src/images/icon-close.png" alt=""/></button>
                 </section>
                 <form id="addEvent">
                     <section class="w-full pad0-20">
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="w-50perc ta-r f-r pos-rel">
-            <img src="images/icon-search.png" class="dib va-middle" alt=""/>
+            <img src="src/images/icon-search.png" class="dib va-middle" alt=""/>
             <input class="s-list-input" type="text" id="search_input" placeholder="Событие, дата или участник"
                    autocomplete onkeyup="calendar.liveSearch()"/>
 
@@ -51,11 +51,11 @@
 <main class="b-main">
     <div class="c-block pad15-0 ta-l">
         <button type="button" class="button button-arrow button-prev va-middle" onclick="calendar.movePrev();">
-            <img src="images/icon-caret-left.png" alt=""/>
+            <img src="src/images/icon-caret-left.png" alt=""/>
         </button>
         <h3 class="va-middle pad0-10 month-year-title">Февраль 2015</h3>
         <button type="button" class="button button-arrow button-next va-middle" onclick="calendar.moveNext();">
-            <img src="images/icon-caret-right.png" alt=""/>
+            <img src="src/images/icon-caret-right.png" alt=""/>
         </button>
         <button type="button" class="button button-clear button-current va-middle" onclick="calendar.onStart();">
             Сегодня
@@ -470,7 +470,7 @@
                 <div class="arrow-right"></div>
             </div>
             <section class="w-full ta-r pad5-0">
-                <button class="button hd-close"><img src="images/icon-close.png" alt=""/></button>
+                <button class="button hd-close"><img src="src/images/icon-close.png" alt=""/></button>
             </section>
             <form id="editEvent">
                 <section class="w-full pad0-20 ta-l">
@@ -495,7 +495,7 @@
 </main>
 
 <!------ JS ----->
-<script type="text/javascript" src="js/calendar.new.js"></script>
+<script type="text/javascript" src="src/scripts/calendar.new.js"></script>
 <script type="text/javascript">
     calendar.init();
 </script>
